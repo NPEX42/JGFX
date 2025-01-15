@@ -1,0 +1,13 @@
+<component name="libraryTable">
+  <library name="lwjgl-nightly-2024-07-28-custom">
+    <CLASSES>
+      <root url="file://$USER_HOME$/Downloads/lwjgl-nightly-2024-07-28-custom" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES>
+      <root url="file://$USER_HOME$/Downloads/lwjgl-nightly-2024-07-28-custom" />
+    </SOURCES>
+    <jarDirectory url="file://$USER_HOME$/Downloads/lwjgl-nightly-2024-07-28-custom" recursive="false" />
+    <jarDirectory url="file://$USER_HOME$/Downloads/lwjgl-nightly-2024-07-28-custom" recursive="false" type="SOURCES" />
+  </library>
+</component>

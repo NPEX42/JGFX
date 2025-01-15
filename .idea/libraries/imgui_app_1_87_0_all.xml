@@ -1,0 +1,9 @@
+<component name="libraryTable">
+  <library name="imgui-app-1.87.0-all">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/../NPGFX/vendor/imgui-app-1.87.0-all.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>

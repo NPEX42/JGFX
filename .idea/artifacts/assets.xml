@@ -1,0 +1,10 @@
+<component name="ArtifactManager">
+  <artifact name="assets">
+    <output-path>$PROJECT_DIR$/out/artifacts/NPGFX</output-path>
+    <root id="root">
+      <element id="directory" name="assets">
+        <element id="dir-copy" path="$PROJECT_DIR$/assets" />
+      </element>
+    </root>
+  </artifact>
+</component>
