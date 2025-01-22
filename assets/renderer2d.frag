@@ -1,7 +1,7 @@
 #version 330 core
 in vec3 vtxColor;
 in vec2 vtxUV;
-out vec4 fragColor;
+layout(location = 0) out vec4 fragColor;
 uniform vec4 uTint;
 
 uniform sampler2D uAlbedo;

@@ -8,6 +8,8 @@ public class Window {
     public static Window Create(int width, int height, String title) {
         Window w = new Window();
         glfwInit();
+        glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 4);
+        glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 5);
         w.windowID = glfwCreateWindow(width, height, title, 0, 0);
         w.MakeCurrent();
         return w;

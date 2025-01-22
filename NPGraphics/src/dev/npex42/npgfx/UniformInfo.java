@@ -4,7 +4,8 @@ public record UniformInfo(String name, UniformType type, int location) {
 
 
     public static enum UniformType {
-        NONE, VEC2, VEC3, VEC4, FLOAT, BYTE, INT;
+        NONE, VEC2, VEC3, VEC4, FLOAT, BYTE, INT,
+        SAMPLER_2D, SAMPLER_3D;
 
         public int ToGL() {
             return switch (this) {
@@ -15,6 +16,8 @@ public record UniformInfo(String name, UniformType type, int location) {
                 case FLOAT  -> GL_FLOAT;
                 case BYTE   -> GL_BYTE;
                 case INT    -> GL_INT;
+                case SAMPLER_2D -> GL_SAMPLER_2D;
+                case SAMPLER_3D -> GL_SAMPLER_3D;
             };
         }
 
@@ -26,6 +29,8 @@ public record UniformInfo(String name, UniformType type, int location) {
                 case GL_FLOAT_VEC4  -> VEC4;
                 case GL_INT         -> INT;
                 case GL_BYTE        -> BYTE;
+                case GL_SAMPLER_2D  -> SAMPLER_2D;
+                case GL_SAMPLER_3D  -> SAMPLER_3D;
                 default             -> NONE;
             };
         }

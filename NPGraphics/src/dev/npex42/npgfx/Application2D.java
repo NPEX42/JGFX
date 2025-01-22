@@ -2,6 +2,8 @@ package dev.npex42.npgfx;
 
 import dev.npex42.npgfx.ui.UIPanel;
 import imgui.ImGui;
+import imgui.ImGuiIO;
+import imgui.flag.ImGuiConfigFlags;
 import imgui.gl3.ImGuiImplGl3;
 import imgui.glfw.ImGuiImplGlfw;
 import org.lwjgl.glfw.GLFW;
@@ -19,7 +21,7 @@ public abstract class Application2D {
     public void OnUserUI() {}
 
     private Window window;
-    private Color activeFill = Color.BLACK;
+    private Color activeFill = Color.magenta;
     private Map<String, UIPanel> panels = new HashMap<>();
     private Texture activeTexture;
 
@@ -37,10 +39,15 @@ public abstract class Application2D {
         Keyboard.SetActiveWindow(window);
 
         ImGui.createContext();
+        ImGuiIO io = ImGui.getIO();
+        io.addConfigFlags(ImGuiConfigFlags.DockingEnable);
         ImGuiImplGlfw implGlfw = new ImGuiImplGlfw();
         implGlfw.init(window.ID(), true);
         ImGuiImplGl3 implGl3 = new ImGuiImplGl3();
         implGl3.init();
+
+        Renderer2D.SetTexture(activeTexture);
+        Renderer2D.SetTint(activeFill);
 
         if (!OnUserCreate()) {
             window.Destroy();
@@ -64,7 +71,10 @@ public abstract class Application2D {
             ImGui.newFrame();
             OnUserUI();
             for (String key : panels.keySet()) {
-                panels.get(key).Update();
+                if (ImGui.begin(key)) {
+                    panels.get(key).Update();
+                }
+                ImGui.end();
             }
             ImGui.endFrame();
             ImGui.render();
@@ -76,6 +86,7 @@ public abstract class Application2D {
         }
 
         OnUserDestroy();
+        ImGui.destroyContext();
         window.Destroy();
     }
 
@@ -94,6 +105,7 @@ public abstract class Application2D {
     }
 
     protected void Fill(Texture tex) {
+        if (tex == null) return;
         if (!tex.equals(activeTexture)) {
             Renderer2D.Flush();
             Renderer2D.SetTint(Color.WHITE);

@@ -1,5 +1,6 @@
 package dev.npex42.npgfx.ui;
 
+import dev.npex42.npgfx.Colour;
 import imgui.ImGui;
 import org.joml.Vector2f;
 import org.joml.Vector3f;
@@ -52,5 +53,20 @@ public class ImGuiExt {
 
     public static Color FloatsToColor(float[] colour) {
         return new Color(colour[0], colour[1], colour[2]);
+    }
+
+    public static boolean ColorEdit3(String id, Colour c) {
+        if (c == null) return false;
+        Vector4f v = c.GetAsVec4();
+        float[] values = new float[] {v.x, v.y, v.z};
+        boolean isDirty = ImGui.colorEdit3(id, values);
+        v.x = values[0];
+        v.y = values[1];
+        v.z = values[2];
+        v.w = 1;
+
+        c.SetFromVec4(v);
+
+        return isDirty;
     }
 }
